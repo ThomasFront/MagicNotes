@@ -1,0 +1,269 @@
+@use './utilities/colors' as *;
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.6rem;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: normal;
+	background-color: $background-color;
+}
+
+input,
+textarea,
+button {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.fa-wand-magic-sparkles {
+	color: $text-color;
+}
+
+.fa-circle-xmark {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	font-size: 3rem;
+	cursor: pointer;
+	transition: transform 0.3s;
+}
+
+.fa-circle-xmark:hover {
+	transform: rotate(360deg);
+}
+
+.app {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	position: relative;
+	margin: 1em 1.5em;
+
+	&__top {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	&__title {
+		font-size: 3rem;
+		font-weight: 400;
+		margin-bottom: 1em;
+	}
+
+	&__menu {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 2em;
+	}
+
+	&__menu-btn {
+		padding: 0.3em;
+		margin: 0 0.5em;
+		font-size: 1.4rem;
+		border: 1px solid black;
+		border-radius: 6px;
+		background-color: $light-color;
+		cursor: pointer;
+		transition: background-color 0.3s, color 0.3s;
+	}
+
+	&__menu-btn:hover {
+		background-color: $gray-color;
+		color: $light-color;
+	}
+
+	&__notes {
+		display: flex;
+		justify-content: center;
+		align-items: start;
+		flex-direction: column;
+		position: relative;
+		width: 100%;
+	}
+
+	&__notes-note {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		position: relative;
+		margin: 1em;
+		border: 2px solid $text-color;
+		border-radius: 6px;
+		background-color: $note-color-title;
+		word-break: break-all;
+	}
+
+	&__notes-note-h2 {
+		padding: 0.2em;
+		font-size: 2.4rem;
+	}
+
+	&__notes-note-text {
+		padding: 1em;
+		background-color: $note-color-text;
+		width: 100%;
+	}
+}
+
+.popup {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100vw;
+	height: 100vh;
+	background-color: $popup-color;
+	color: $light-color;
+
+	&__label {
+		font-size: 2rem;
+		font-weight: bold;
+	}
+
+	&__textarea {
+		margin: 1em 0;
+		font-size: 2rem;
+		width: 80%;
+		max-width: 80%;
+		height: 20%;
+	}
+
+	&__btn {
+		margin-top: 1.8em;
+		width: 60%;
+		padding: 0.8em 1.6em;
+		background-color: $note-color-title;
+		border: none;
+		border-radius: 6px;
+		cursor: pointer;
+		transition: background-color 0.3s;
+	}
+
+	&__btn--cancel {
+		background-color: $gray-color;
+	}
+
+	&__btn:hover {
+		background-color: $note-color-title-hover;
+	}
+
+	&__btn--cancel:hover {
+		background-color: $light-color;
+	}
+
+	&__textarea:focus {
+		outline: 1px solid $note-color-title;
+	}
+}
+
+@media (min-width: 500px) {
+	.app {
+		&__title {
+			font-size: 3.5rem;
+		}
+		&__menu-btn {
+			font-size: 1.6rem;
+			padding: 1em;
+		}
+		&__notes {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+		&__notes-note {
+			width: 40%;
+			max-width: 250px;
+		}
+	}
+	.popup {
+		&__label {
+			font-size: 3rem;
+		}
+
+		&__btn {
+			padding: 1em 2em;
+			font-size: 1.7rem;
+		}
+	}
+
+	@media (min-width: 768px) {
+		.app {
+			&__title {
+				font-size: 4.8rem;
+			}
+			&__menu-btn {
+				font-size: 2.2rem;
+			}
+		}
+		.popup {
+			&__textarea {
+				font-size: 3rem;
+			}
+			&__btn {
+				width: 30%;
+			}
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.app {
+			margin-top: 2em;
+
+			&__top {
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				flex-direction: row;
+				width: 100%;
+			}
+			&__title {
+				font-size: 4rem;
+			}
+			&__menu-btn {
+				font-size: 1.8rem;
+			}
+			&__notes {
+				flex-direction: row;
+				flex-wrap: wrap;
+				margin-top: 2em;
+			}
+			&__notes-note {
+				width: 40%;
+				max-width: 250px;
+			}
+		}
+		.popup {
+			&__label {
+				font-size: 4.2rem;
+			}
+
+			&__btn {
+				width: 15%;
+				padding: 1em 2em;
+				font-size: 1.7rem;
+			}
+			&__textarea {
+				width: 40%;
+			}
+		}
+	}
+}
