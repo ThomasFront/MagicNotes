@@ -29,14 +29,21 @@ const addNewNote = () => {
 	newNote.classList.add('app__notes-note')
 	newNote.setAttribute('id', cardID)
 
-	newNote.innerHTML = `<i class="fa-solid fa-circle-xmark" id="delete-icon"></i>
-<h2 class="app__notes-note-h2">Notatka ${cardID}</h2>
-<p class="app__notes-note-text">${popupTextArea.value}</p>`
+	newNote.innerHTML = `<i class="fa-solid fa-circle-xmark" id="delete-icon" onclick="deleteNote(${cardID})"></i>
+	<h2 class="app__notes-note-h2">Notatka ${cardID}</h2>
+	<p class="app__notes-note-text">${popupTextArea.value}</p>`
+
 	notesArea.appendChild(newNote)
 	popup.style.display = 'none'
 	popupTextArea.value = ''
 	cardID++
 }
+
+const deleteNote = id => {
+	const noteToDelete = document.getElementById(id)
+	notesArea.removeChild(noteToDelete)
+}
+
 
 popupAddBtn.addEventListener('click', addNewNote)
 popupCancelBtn.addEventListener('click', closePopup)
