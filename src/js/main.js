@@ -44,7 +44,15 @@ const deleteNote = id => {
 	notesArea.removeChild(noteToDelete)
 }
 
+const checkEnter = () => {
+	if(event.keyCode === 13) {
+		addNewNote()
+	}
+}
 
+
+
+popupTextArea.addEventListener('keyup', checkEnter)
 popupAddBtn.addEventListener('click', addNewNote)
 popupCancelBtn.addEventListener('click', closePopup)
 addBtn.addEventListener('click', showPopup)
